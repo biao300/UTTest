@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+}
+
+.ui-left {
+    width: 25%;
+}
+
+.calendar {
+    width: 70%;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    background-color: black;
+    color: #fff;
+
+    border-radius: 6px;
+    padding: 5px 5px;
+  
+    position: absolute;
+    z-index: 99;
+}
+
+.form-control {
+    display: inline-block;
+    border: 1px solid #666666;
+    margin: 20px 20px;
+}
+
+.error-item {
+    border: red 2px solid;
+}
+
+.error-msg {
+    color: red; 
+}

@@ -1,0 +1,16 @@
+node_modules/*
+bower_components/*
+Content/*
+Scripts/*
+.env
+obj/*
+packages/*
+bin/*
+
+.vs/*
+attachments/*
+
+*.log
+*.suo
+*.user
+/Glossary/wwwroot/dist
