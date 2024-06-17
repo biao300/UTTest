@@ -4,7 +4,6 @@ import Calendar from './calendar';
 import EventAdd from './eventAdd';
 import EventSearch from './eventSearch';
 
-
 export default function App() {
 
     const [events, setEvents] = useState([]);

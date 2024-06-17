@@ -1,26 +1,19 @@
 import React from 'react';
 
-interface TextAreaFieldProps {
+interface DatepickerProps {
     name: string;
     input: string;
-    label: string;
-    rows: number;
-    cols: number;
-    maxLength: number;
+    minDate: string;
     touched: boolean;
     error: string;
-    handleChange: (event: React.FormEvent<HTMLTextAreaElement>) => void;
+    handleChange: (event: React.FormEvent<HTMLInputElement>) => void;
 }
 
-export default function TextAreaField(props: TextAreaFieldProps) {
-
+export default function Datepicker(props: DatepickerProps) {
     const {
         name, 
         input, 
-        label, 
-        rows, 
-        cols, 
-        maxLength, 
+        minDate,
         touched, 
         error,
         handleChange
@@ -32,18 +25,15 @@ export default function TextAreaField(props: TextAreaFieldProps) {
         className += " error-item";
     }
 
-    return (<>
-        <textarea name={name}
+    return (<div>
+        <input type="date"
+            name={name}
             value={input}
-            placeholder={label}
+            min={minDate}
             className={className}
-            style={{ resize: "none" }}
-            rows={rows}
-            cols={cols}
-            maxLength={maxLength}
             onChange={handleChange}
         />
         {touched && error !== "" && <span className="error-msg">{error}</span>}
-    </>
+    </div>
     );
 }

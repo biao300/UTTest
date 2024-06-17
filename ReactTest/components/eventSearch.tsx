@@ -8,20 +8,20 @@ export default function EventSearch({ searchClick }: any) {
     const [searchTouched, setSearchTouched] = useState(false);
 
     const handleSearch = () => {
-        let searchError = "";
+        let searchMsg = "";
         if (!search && search === "") {
-            searchError = "please input search keywords";
+            searchMsg = "please input search keywords";
         }
 
-        setSearchError(searchError);
+        setSearchError(searchMsg);
         setSearchTouched(true);
 
-        if (searchError == "") {
+        if (searchMsg == "") {
             searchClick(search);
         }
     }
 
-    return (<>
+    return (<div>
         <TextAreaField 
             name="search"
             input={search}
@@ -35,6 +35,6 @@ export default function EventSearch({ searchClick }: any) {
         />
 
         <p><input type="button" value='Search' onClick={handleSearch} /></p>
-    </>)
+    </div>)
 
 }

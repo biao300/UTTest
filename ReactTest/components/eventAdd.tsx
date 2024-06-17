@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 
 import TextAreaField from 'components/form/textarea';
-
-
+import Datepicker from './form/datepicker';
 
 export default function EventAdd({ submitClick }: any) {
     const [title, setTitle] = useState("");
@@ -13,41 +12,44 @@ export default function EventAdd({ submitClick }: any) {
     const [descriptionError, setDescriptionError] = useState("");
     const [descriptionTouched, setDescriptionTouched] = useState(false);
 
+    const [date, setDate] = useState("");
     const [dateError, setDateError] = useState("");
+    const [dateTouched, setDateTouched] = useState(false);
 
     const [formMessage, setFormMessage] = useState("");
 
     const checkValidation = ({title, description, date}: any) => {
-        let titleError = "";
-        let descriptionError = "";
-        let dateError = "";
+        let titleMsg = "";
+        let descriptionMsg = "";
+        let dateMsg = "";
 
         if (!title && title === "") {
-            titleError = "Please input term";
+            titleMsg = "Please input title";
         }
 
         if (!description && description === "") {
-            descriptionError = "Please input definition";
+            descriptionMsg = "Please input description";
         }
 
         if (!date && date === "") {
-            dateError = "Please input event date";
+            dateMsg = "Please input event date";
         }
 
         setTitleTouched(true);
         setDescriptionTouched(true);
-        setTitleError(titleError);
-        setDescriptionError(descriptionError);
-        setDateError(dateError);
+        setDateTouched(true);
+        
+        setTitleError(titleMsg);
+        setDescriptionError(descriptionMsg);
+        setDateError(dateMsg);
 
         setFormMessage("");
 
-        return titleError === "" && descriptionError === "" && dateError === "";
+        return titleMsg === "" && descriptionMsg === "" && dateMsg === "";
     }
 
     const handleSubmit = (event: any) => {
         event.preventDefault();
-
 
         const addItem = {
             title: event.target.title.value,
@@ -59,10 +61,14 @@ export default function EventAdd({ submitClick }: any) {
 
         if (valid) {
             submitClick(event);
+
+            setTitle("");
+            setDescription("");
+            setDate("");
         }
     }
 
-    return (<form onSubmit={handleSubmit}>
+    return (<form onSubmit={handleSubmit} className='form'>
         <h2>Add new event</h2>
         <TextAreaField 
             name="title"
@@ -87,11 +93,16 @@ export default function EventAdd({ submitClick }: any) {
             handleChange={(e: any) => setDescription(e.currentTarget.value)}
         />
 
-        <input type="date" name="date" />
-        <br/>
-        <span className="error-msg">{dateError}</span>
+        <Datepicker
+            name="date"
+            input={date}
+            minDate={new Date().toISOString().split('T')[0]}
+            touched={dateTouched}
+            error={dateError}
+            handleChange={(e: any) => setDate(e.currentTarget.value)}
+        />
 
-        <p><input type="submit" value='Add Event' min={new Date().toISOString().split('T')[0]} /></p>
+        <p><input type="submit" value='Add Event' /></p>
         <p>{formMessage}</p>
     </form>)
 }

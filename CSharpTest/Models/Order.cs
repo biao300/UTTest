@@ -2,7 +2,7 @@
 {
     public class OrderDetail
     { 
-        public Product product { get; set; }
+        public Product? product { get; set; }
         public int quantity;
     }
 
@@ -35,7 +35,10 @@
 
             foreach (OrderDetail item in orderDetails) 
             {
-                ret += item.product.Price * (double)item.quantity;
+                if (item.product != null)
+                {
+                    ret += item.product.Price * item.quantity;
+                }
             }
 
             return Math.Round(ret, 2);

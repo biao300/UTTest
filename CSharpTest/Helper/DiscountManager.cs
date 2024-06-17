@@ -1,4 +1,4 @@
-﻿namespace UTCSharpTest.Models
+﻿namespace CSharpTest.Helper
 {
     // Question 5
     public static class DiscountManager
@@ -18,7 +18,7 @@
 
         public static double ApplyDiscountFixed(double price, double amount)
         {
-            if (amount < 0 || (price - amount) <= 0)
+            if (amount < 0 || price - amount <= 0)
             {
                 Console.WriteLine("invalid discount amount, can't apply!");
                 return Math.Round(price, 2);

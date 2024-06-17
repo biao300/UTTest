@@ -3,10 +3,9 @@
 using Newtonsoft.Json;
 using UTCSharpTest.Models;
 
-Console.WriteLine($@"
-Command list: (use semicolon ';' to separate command and parameters, use comma to separate multiple parameters)
+Console.WriteLine($@"Command list: (use semicolon ';' to separate command and parameters, use comma ',' to separate multiple parameters)
   show shopping cart                              - display all products in shopping cart
-  add shoppingcart; id,name,price                - add one product into shopping cart
+  add shoppingcart; id,name,price                 - add one product into shopping cart
   remove shopping cart; product id                - remove one product from shopping cart
   sum shopping cart                               - get total price from shopping cart
   filter shopping cart; product name              - search product in shopping cart by name
@@ -16,8 +15,8 @@ Command list: (use semicolon ';' to separate command and parameters, use comma t
   discount shopping cart; product id, amount(%)   - with % or not will apply different type discount
   
   add order; id,name,price,quantity   - add one product into order
-  show order                           - display all products in order
-  sum order                            - get total price from order
+  show order                          - display all products in order
+  sum order                           - get total price from order
 
 Please input command:
 ");
